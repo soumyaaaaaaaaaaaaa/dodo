@@ -295,7 +295,6 @@
 </head>
 <body>
   <div class="hero">
-
     <!-- BACKGROUND MUSIC -->
     <audio id="bg-music" src="song.mp3" loop></audio>
 
@@ -348,27 +347,21 @@
     const bgMusic = document.getElementById("bg-music");
     const nextBtn = document.getElementById("next-btn");
 
-    // autoplay needs user interaction on phone, so we start music when she taps button
+    // start music + go to second screen
     startBtn.addEventListener("click", () => {
       startBtn.classList.add("clicked");
 
-      // start/continue bg music in loop
-      bgMusic.play().catch(() => {
-        // if blocked, nothing to do; user already tapped so most browsers allow this
-      });
+      bgMusic.play().catch(() => {});
 
-      // small delay for pop effect then switch to second screen
       setTimeout(() => {
         firstScreen.style.display = "none";
         secondScreen.classList.add("active");
       }, 260);
     });
 
-    // next button placeholder for later pages
+    // go to next HTML page
     nextBtn.addEventListener("click", () => {
-      // change this when we build page 3
       window.location.href = "page3.html";
-
     });
   </script>
 </body>
