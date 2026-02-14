@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you forgive me?</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #05030a;
+      color: #fff;
+      overflow-x: hidden;      /* allow vertical scroll */
+    }
+
+    /* FULL SCREEN BACKGROUND VIDEO */
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* CENTER LAYER */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;       /* can grow and scroll */
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    /* GLASS CARD */
+    .sorry-card {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      padding: 16px 16px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeInUp 0.55s ease-out;
+    }
+
+    .sorry-title {
+      font-family: "Dancing Script", cursive;
+      font-size: 1.7rem;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+      margin-bottom: 4px;
+    }
+
+    .sorry-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: center;
+      opacity: 0.95;
+    }
+
+    /* VIDEO IN BOX (SMALLER) */
+    .video-wrap {
+      margin: 10px auto 0;
+      width: 80%;
+      max-width: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.85);
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .btn-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff9bda, #e3e3e3);
+      color: #000000;
+      box-shadow:
+        0 0 14px rgb(252, 151, 255),
+        0 0 24px rgba(243, 161, 233, 0.936);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+      box-shadow: none;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sorry-card {
+        max-width: 360px;
+        padding: 12px 12px 14px;
+      }
+
+      .sorry-title {
+        font-size: 1.5rem;
+      }
+
+      .sorry-text {
+        font-size: 0.85rem;
+      }
+
+      .video-wrap {
+        width: 75%;
+        max-width: 220px;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        padding: 0.7rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- full screen background video -->
+  <video class="bg-video" src="sorry-bg-video.mp4" autoplay loop muted playsinline></video>
+
+  <div class="page">
+    <div class="sorry-card">
+      <div class="sorry-title">
+        I’m really sorry…
+      </div>
+
+      <div class="sorry-text">
+        
+        I soooo sorrrrrrryyy for everything i did wrongggg I just want to be the
+        reason you smile Yepp im sorry I say anything
+        without even thinkinggg
+      </div>
+
+      <div class="video-wrap">
+        <video src="sorry-bg-video.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <div class="sorry-text">
+        Sooooooo… will you forgive meh?
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yes" id="yes-btn">Yes</button>
+        <button class="btn btn-no" id="no-btn">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+
+    yesBtn.addEventListener("click", () => {
+      // go to next normal flow page after forgiveness
+      window.location.href = "page6.html"; // change if you use another name
+    });
+
+    noBtn.addEventListener("click", () => {
+      // go to think again video page
+      window.location.href = "no-forgive.html";
+    });
+  </script>
+</body>
+</html>

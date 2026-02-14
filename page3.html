@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you be my Valentine?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #05030a;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* FULL PAGE BACKGROUND */
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("bg3.jpg"); /* <- your new background image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* MAIN BOX (NOT POPUP) */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      padding: 16px 16px 18px;
+      background: radial-gradient(circle at top, rgba(255, 192, 203, 0.35), rgba(9, 2, 28, 0.95));
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      backdrop-filter: blur(4px);
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* CAT GIF */
+    .cat-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .cat-wrap img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+    }
+
+    .question-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .question-sub {
+      font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .video-wrap {
+      margin-top: 6px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid #ff4f7b;
+      box-shadow:
+        0 0 18px rgba(255, 79, 123, 0.8),
+        0 0 40px rgba(255, 79, 123, 0.45);
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* BUTTONS ROW */
+    .btn-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff8fb1, #ff4f7b);
+      color: #fff;
+      box-shadow:
+        0 0 12px rgba(255, 79, 123, 0.85),
+        0 0 22px rgba(255, 143, 177, 0.75);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+      box-shadow: none;
+    }
+
+    /* TEMP MESSAGE */
+    .no-message {
+      margin-top: 6px;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .no-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        max-width: 360px;
+        padding: 14px 14px 18px;
+      }
+
+      .cat-wrap img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Page 3 music, starts from 0 and loops -->
+    <audio id="bg-music" src="song.mp3" loop></audio>
+
+    <div class="card">
+      <div class="cat-wrap">
+        <img src="cat.gif" alt="Cute cat" />
+      </div>
+
+      <div class="question-title">
+       Sooooooo Will you be my valentineee?
+      </div>
+      <div class="question-sub">
+       I LOVEEEEE UUUUUU 😼
+      </div>
+
+      <div class="video-wrap">
+        <video src="video2.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yes" id="yes-btn">Yes</button>
+        <button class="btn btn-no" id="no-btn">No</button>
+      </div>
+
+      <div class="no-message" id="no-message">
+        now there isnt any option for reject hahah
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById("bg-music");
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+    const noMessage = document.getElementById("no-message");
+
+    // autoplay on first tap
+    window.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+      }
+    }, { once: true });
+
+    // NO button logic
+    noBtn.addEventListener("click", () => {
+      // remove the No button
+      noBtn.style.display = "none";
+
+      // show message briefly
+      noMessage.classList.add("show");
+
+      setTimeout(() => {
+        noMessage.classList.remove("show");
+      }, 2000);
+    });
+
+    // YES button logic
+    yesBtn.addEventListener("click", () => {
+      // go to next page – change this to your real next file
+      window.location.href = "page4.html";
+    });
+  </script>
+</body>
+</html>

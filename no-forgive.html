@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Think again sweetie</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* full-screen background image */
+    .video-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70vw;          /* control size */
+  max-width: 380px;
+  height: auto;
+  transform: translate(-50%, -60%);
+  object-fit: contain;
+  z-index: 0;
+  opacity: 0.9;
+}
+.video-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70vw;          /* control size */
+  max-width: 380px;
+  height: auto;
+  transform: translate(-50%, -60%);
+  object-fit: contain;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+
+    /* bottom box */
+    .bottom-box {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 16px 18px 18px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.85);
+    }
+
+    .bottom-text {
+      font-family: "Dancing Script", cursive;
+      font-size: 1.5rem;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    .bottom-sub {
+      font-size: 0.95rem;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .back-btn {
+      margin-top: 6px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0.8rem 2.4rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff8fb1, #ff4f7b);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow:
+        0 0 14px rgba(255, 79, 123, 0.9),
+        0 0 26px rgba(255, 143, 177, 0.7);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .back-btn:active {
+      transform: scale(0.96);
+      box-shadow: none;
+    }
+
+    @media (max-width: 480px) {
+      .bottom-text {
+        font-size: 1.3rem;
+      }
+
+      .bottom-sub {
+        font-size: 0.9rem;
+      }
+
+      .back-btn {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- full screen background image -->
+  <img class="video-bg" src="think-again.jpg" alt="think again bg" />
+
+  <!-- bottom box -->
+  <div class="bottom-box">
+    <div class="bottom-text">
+      thinkkkk againnn sweetie 🫦
+    </div>
+    <div class="bottom-sub">
+      heheheheh
+    </div>
+    <button class="back-btn" id="back-btn">
+      go back
+    </button>
+  </div>
+
+  <script>
+    const backBtn = document.getElementById("back-btn");
+
+    backBtn.addEventListener("click", () => {
+      // back to forgive page
+      window.location.href = "page5.html";
+      // or use history.back() if you prefer:
+      // history.back();
+    });
+  </script>
+</body>
+</html>
